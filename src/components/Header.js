@@ -12,7 +12,7 @@ function Header(props) {
       <div className="logo">
         <Link className="logo-nav" to="/">
           <h1>
-            <span className="light-logo"> Mickaël </span> Hert
+            <span className="light-logo"> Mickaël </span> H.
           </h1>
         </Link>
       </div>
