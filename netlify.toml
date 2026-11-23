@@ -1,0 +1,59 @@
+[build]
+  command = "npm run build"
+  publish = "build/client"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Anciennes URLs du premier site → nouvelles adresses
+[[redirects]]
+  from = "/artworks-list"
+  to = "/tableaux"
+  status = 301
+[[redirects]]
+  from = "/artwork-info/1"
+  to = "/tableaux/joker"
+  status = 301
+[[redirects]]
+  from = "/artwork-info/2"
+  to = "/tableaux/mario"
+  status = 301
+[[redirects]]
+  from = "/artwork-info/3"
+  to = "/tableaux/batman-vs-joker"
+  status = 301
+[[redirects]]
+  from = "/artwork-info/4"
+  to = "/tableaux/brigitte-bardot"
+  status = 301
+[[redirects]]
+  from = "/artwork-info/5"
+  to = "/tableaux/link"
+  status = 301
+[[redirects]]
+  from = "/artwork-info/6"
+  to = "/tableaux/serge-gainsbourg"
+  status = 301
+[[redirects]]
+  from = "/artwork-info/*"
+  to = "/tableaux"
+  status = 301
+
+# Toute autre URL : page 404 (rendue par l'application)
+[[redirects]]
+  from = "/*"
+  to = "/__spa-fallback.html"
+  status = 404
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
